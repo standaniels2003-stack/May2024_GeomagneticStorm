@@ -22,3 +22,29 @@ dist/
 # OS files
 .DS_Store
 Thumbs.db
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.toc
+*.out
+*.lof
+*.lot
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ilg
+*.ind
+
+# PDF output (optional: track if you want, or ignore)
+#*.pdf
+
+# Python-generated figures (optional)
+# images/*.png
+

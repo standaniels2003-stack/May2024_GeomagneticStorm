@@ -1,5 +1,5 @@
 #====================================================================================
-# This File is used for the reading and prosessing of the Raw Data Files
+# This File is used for the reading and prosessing of the OMNI_HRO2_1MIN Data File
 #====================================================================================
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -66,7 +66,7 @@ df.set_index('timestamp', inplace=True)
 # -----------------------
 # 7. Save each column as its own CSV for LaTeX plotting
 # -----------------------
-output_folder = "../Processed_Data/"
+output_folder = "../Processed_Data/OMNI_Data/"
 
 import os
 os.makedirs(output_folder, exist_ok=True)
