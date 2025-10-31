@@ -1,9 +1,15 @@
 \documentclass[12pt,a4paper]{article}
+
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{caption}
+\captionsetup{hypcap=true}
+\usepackage{float}
+\usepackage{natbib}   % For name-year citations
+\usepackage{url}      % For website URLs
 \geometry{margin=2.5cm}
 %==================================================================
 \title{From Solar Wind to Auroras: Magnetosphere--Ionosphere Response During the May 2024 Geomagnetic Storm}
@@ -21,15 +27,31 @@ Space Physics and Technology (FYS3600)}
 \newpage
 %==================================================================
 \section{Introduction}
-%==================================================================
-\section{Theory}
+Geomagnetic storms are disturbances in the Earth's magnetosphere caused by enhanced solar wind--magnetosphere coupling, which can lead to substantial variations in the geomagnetic field.
+The theoretical framework for magnetic storms was first formalized by Chapman and Ferraro \cite{chapman1933new}, who described the characteristic phases of storm development.
+Historically, geomagnetic storms were associated with auroral phenomena and disruptions in early telecommunication systems.
+In contemporary contexts, they can induce geomagnetically induced currents (GICs) in power grids, degrade satellite operations, and compromise high-precision navigation systems.
+Notably, strong geomagnetic storms have been shown to significantly affect high-latitude Real-Time Kinematic (RTK) positioning networks, resulting in reduced accuracy of precise geolocation measurements \cite{jacobsen2012observed}.
+Investigating the mechanisms and impacts of geomagnetic storms is essential for both advancing space weather science and mitigating risks to technological infrastructure.\\\\
+In this study one of the most intense geomagnetic storm of recent times\cite{tulasi2024super} is used to demonstrate how changes in the solar wind towards earth end up modulating the magnetosphere-ionosphere (M-I) system.
 %==================================================================
 \section{Observations}
+The evolution of the 10–11 May 2024 geomagnetic storm is illustrated using AMPERE Northern Hemisphere field-aligned current (FAC) maps \citep{Anderson2000, AMPEREwebsite}.
+Figure~\ref{fig:ampere1} shows the early stages of the storm.
+At 09:00 UT, FACs are weak, with pale red and blue colors indicating minimal upward and downward currents, reflecting pre-storm conditions with limited dayside reconnection and a small polar cap.
+By 12:00 UT, the currents begin to intensify, signaling the onset of enhanced region 1 and region 2 currents as solar wind-magnetosphere coupling strengthens.
+Figure~\ref{fig:ampere2} presents the later stages at 18:00 UT and 02:00 UT.
+The FACs are now strongly developed, with saturated red and blue colors representing intense upward and downward currents.
+This indicates the storm main phase, with expanded region 1 and 2 currents, a larger polar cap, and enhanced auroral electrojets.
+The progression from weak to strong currents demonstrates the gradual response of the magnetosphere-ionosphere system to changing solar wind conditions, as captured by AMPERE observations \citep{Anderson2000, AMPEREwebsite}.
+\input{Graphs_Figures/Ampere_Figure1.tex}
+\input{Graphs_Figures/Ampere_Figure2.tex}
 %==================================================================
 \section{Discussion}
 %==================================================================
 \section{Conclusion}
 %==================================================================
-\bibliography{References}
+\bibliographystyle{apalike}  % Or another name-year style
+\bibliography{references}    % 'references' is the name of your .bib file (without .bib extension)
 %==================================================================
 \end{document}
