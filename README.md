@@ -12,10 +12,11 @@ Project/
 │ └── Ampere_Data_Processing.py
 │
 ├── Raw_Data_Files/ # Raw datasets
-│ └── OMNI_HRO2_1MIN.csv
-│ └── Ampere_Data/ # Here are all the raw Ampere Data files stored
+│ └── OMNI_HRO2_1MIN.csv # This is the csv file used from the OMNI data
+│ └── Ampere_Data/ # Here are all the raw Ampere data files stored
 │
 ├── Report/ # LaTeX report
+│ ├── References.bib
 │ ├── Report.tex
 │ ├── Report.pdf
 │ └── Graphs_Figures/ # LaTeX figure files
