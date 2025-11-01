@@ -1,5 +1,6 @@
 # May2024_GeomagneticStorm
 # Repository Structure:
+```bash
 Project/
 │
 ├── Code/ # Python scripts for processing raw data and generating figures
@@ -22,3 +23,4 @@ Project/
 │ └── Ampere_Figure2.tex
 │
 └── README.md
+```
