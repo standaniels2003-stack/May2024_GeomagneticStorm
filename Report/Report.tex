@@ -11,6 +11,10 @@
 \usepackage{natbib}   % For name-year citations
 \usepackage{url}      % For website URLs
 \geometry{margin=2.5cm}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+\usepackage{subcaption}
 %==================================================================
 \title{From Solar Wind to Auroras: Magnetosphere--Ionosphere Response During the May 2024 Geomagnetic Storm}
 \author{Stan Daniels\\
@@ -33,17 +37,17 @@ Historically, geomagnetic storms were associated with auroral phenomena and disr
 In contemporary contexts, they can induce geomagnetically induced currents (GICs) in power grids, degrade satellite operations, and compromise high-precision navigation systems.
 Notably, strong geomagnetic storms have been shown to significantly affect high-latitude Real-Time Kinematic (RTK) positioning networks, resulting in reduced accuracy of precise geolocation measurements \cite{jacobsen2012observed}.
 Investigating the mechanisms and impacts of geomagnetic storms is essential for both advancing space weather science and mitigating risks to technological infrastructure.\\\\
-In this study one of the most intense geomagnetic storm of recent times\cite{tulasi2024super} is used to demonstrate how changes in the solar wind towards earth end up modulating the magnetosphere-ionosphere (M-I) system.
+% white line
+This study utilizes one of the most intense geomagnetic storms of recent times \cite{tulasi2024super}, to demonstrate how changes in the solar wind towards Earth modulate the magnetosphere-ionosphere (M-I) system. 
+Several datasets have been used to investigate these effects.  
+The \textit{OMNI dataset} \citep{OMNI2025} provides high-resolution solar wind and interplanetary magnetic field measurements, including the magnetic field components (\(B_x\), \(B_y\), \(B_z\)), total field magnitude (\(B\)), geomagnetic indices (e.g., SYM-H), and plasma parameters such as flow speed, proton density, and dynamic pressure, with time parameters shifted to the nose of the Earth's bow shock.  
+The \textit{AMPERE dataset} \citep{Anderson2000, AMPEREwebsite} provides global field-aligned current observations derived from the Iridium satellite constellation, revealing how solar wind energy and momentum are transmitted into the ionosphere.  
+Additional datasets may be included following the same structure: specify the source, measured variables, temporal and spatial resolution, and any preprocessing (e.g., coordinate transformations or time-shifting).  
+This approach ensures consistency and clarity when describing multiple instruments and data sources throughout the report.
 %==================================================================
 \section{Observations}
-The evolution of the 10–11 May 2024 geomagnetic storm is illustrated using AMPERE Northern Hemisphere field-aligned current (FAC) maps \citep{Anderson2000, AMPEREwebsite}.
-Figure~\ref{fig:ampere1} shows the early stages of the storm.
-At 09:00 UT, FACs are weak, with pale red and blue colors indicating minimal upward and downward currents, reflecting pre-storm conditions with limited dayside reconnection and a small polar cap.
-By 12:00 UT, the currents begin to intensify, signaling the onset of enhanced region 1 and region 2 currents as solar wind-magnetosphere coupling strengthens.
-Figure~\ref{fig:ampere2} presents the later stages at 18:00 UT and 02:00 UT.
-The FACs are now strongly developed, with saturated red and blue colors representing intense upward and downward currents.
-This indicates the storm main phase, with expanded region 1 and 2 currents, a larger polar cap, and enhanced auroral electrojets.
-The progression from weak to strong currents demonstrates the gradual response of the magnetosphere-ionosphere system to changing solar wind conditions, as captured by AMPERE observations \citep{Anderson2000, AMPEREwebsite}.
+\input{Graphs_Figures/OMNI_Graph1.tex}
+\input{Graphs_Figures/OMNI_Graph2.tex}
 \input{Graphs_Figures/Ampere_Figure1.tex}
 \input{Graphs_Figures/Ampere_Figure2.tex}
 %==================================================================

@@ -1,25 +1,25 @@
 #====================================================================================
-# This File is used for the reading and prosessing of the OMNI_HRO2_1MIN Data File
+# OMNI Data Processing and Plotting in Python
 #====================================================================================
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
+import os
 
 # -----------------------
 # 1. Load CSV
 # -----------------------
 df = pd.read_csv(
     "../Raw_Data_Files/OMNI_HRO2_1MIN.csv",
-    skiprows=93,      # Skip header lines if needed
-    skipfooter=3,     # Skip footer lines if needed
-    engine='python'   # Required for skipfooter
+    skiprows=93,
+    skipfooter=3,
+    engine='python'
 )
 
 # -----------------------
 # 2. Clean column names
 # -----------------------
-df.columns = df.columns.str.strip()  # remove extra spaces
-
+df.columns = df.columns.str.strip()
 df.rename(columns={
     'EPOCH_TIME_yyyy-mm-ddThh:mm:ss.sssZ': 'timestamp',
     'BX__GSE_nT': 'Bx',
@@ -32,9 +32,6 @@ df.rename(columns={
     'SYM/H_INDEX_nT': 'SYM_H_index'
 }, inplace=True)
 
-# Verify renaming
-print("Columns after rename:", df.columns.tolist())
-
 # -----------------------
 # 3. Convert timestamp
 # -----------------------
@@ -46,10 +43,7 @@ df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
 numeric_cols = ['Bx', 'By', 'Bz', 'flow_speed', 'proton_density', 
                 'flow_pressure', 'one_minus_M_AE', 'SYM_H_index']
 
-# Convert to numeric (any non-numeric becomes NaN)
 df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors='coerce')
-
-# Replace common OMNI fill values with NaN
 fill_values = [9999.99, 99999.9, 999.990, 99.9900, -999.9]
 df.replace(fill_values, np.nan, inplace=True)
 
@@ -64,33 +58,35 @@ df['B_magnitude'] = np.sqrt(df['Bx']**2 + df['By']**2 + df['Bz']**2)
 df.set_index('timestamp', inplace=True)
 
 # -----------------------
-# 7. Save each column as its own CSV for LaTeX plotting
+# 7. Optional: Downsample for plotting
+# -----------------------
+# Uncomment and adjust factor if you want fewer points
+# df = df.iloc[::10]  # keeps every 10th row
+
+# -----------------------
+# 8. Save CSVs (optional)
 # -----------------------
 output_folder = "../Processed_Data/OMNI_Data/"
-
-import os
 os.makedirs(output_folder, exist_ok=True)
 
 columns_to_plot = numeric_cols + ['B_magnitude']
 
 for col in columns_to_plot:
-    out_df = df[[col]].dropna()  # keep timestamp + one variable
-    out_df.to_csv(f"{output_folder}{col}.csv", index=True)
-    print(f"Saved: {output_folder}{col}.csv")
-
+    out_df = df[[col]].dropna().reset_index()
+    out_df.to_csv(f"{output_folder}{col}.csv", index=False, encoding='utf-8')
+    print(f"Saved CSV: {output_folder}{col}.csv")
 
 # -----------------------
-# 8. Plot all numeric columns
+# 9. Plot each column and save as PNG
 # -----------------------
-columns_to_plot = numeric_cols + ['B_magnitude']
-
-fig, axes = plt.subplots(len(columns_to_plot), 1, figsize=(14, 3*len(columns_to_plot)), sharex=True)
-
-for i, col in enumerate(columns_to_plot):
-    axes[i].plot(df.index, df[col])
-    axes[i].set_ylabel(col)
-    axes[i].grid(True)
-
-axes[-1].set_xlabel('Time')
-plt.tight_layout()
-plt.show()
+for col in columns_to_plot:
+    plt.figure(figsize=(12, 4))
+    plt.plot(df.index, df[col], color='tab:blue')
+    plt.title(col)
+    plt.xlabel('Time')
+    plt.ylabel(col)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(f"{output_folder}{col}.png", dpi=300)
+    plt.close()
+    print(f"Saved PNG: {output_folder}{col}.png")
