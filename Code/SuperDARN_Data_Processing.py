@@ -1,48 +1,47 @@
 #====================================================================================
-# Ampere Data Processing
+# SuperDARN Data Processing
 #====================================================================================
 import os
 import shutil
 from glob import glob
 from PIL import Image
+import matplotlib.pyplot as plt
 #------------------------------------------------------------------------------------
 # Paths
 #------------------------------------------------------------------------------------
-source_folder = "../Raw_Data_Files/Ampere_Data"  # where Ampere_Figure*.png are
-destination_folder = "../Processed_Data/Ampere"
+source_folder = "../Raw_Data_Files/SuperDARN_Data"
+destination_folder = "../Processed_Data/SuperDARN"
 #------------------------------------------------------------------------------------
 # Create destination folder if it doesn't exist
 #------------------------------------------------------------------------------------
 os.makedirs(destination_folder, exist_ok=True)
 #------------------------------------------------------------------------------------
-# Find all Ampere PNG files in the source folder
+# Define crop coordinates
 #------------------------------------------------------------------------------------
-ampere_pngs = glob(os.path.join(source_folder, "Ampere_*.png"))
+left = 0
+upper = 0
+right = 850
+lower = 750
 #------------------------------------------------------------------------------------
-# Set scale percentage
+# Process all PNG files in source folder
 #------------------------------------------------------------------------------------
-scale_percentage = 100
-#------------------------------------------------------------------------------------
-# Process each Ampere PNG file
-#------------------------------------------------------------------------------------
-ampere_pngs = glob(os.path.join(source_folder, "Ampere_*.png"))
+png_files = glob(os.path.join(source_folder, "*.png"))
 
-for file_path in ampere_pngs:
+for file_path in png_files:
     # Load image
     img = Image.open(file_path)
     
-    # Calculate new width and height
-    new_width = int(img.width * scale_percentage / 100)
-    new_height = int(img.height * scale_percentage / 100)
-
-    # Rescale image
-    resized_img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+    # Crop image
+    cropped_img = img.crop((left, upper, right, lower))
     
-    # Save to destination folder with same filename
+    # Get filename without folder
     filename = os.path.basename(file_path)
-    save_path = os.path.join(destination_folder, filename)
-    resized_img.save(save_path)
     
-    print(f"Rescaled and saved: {filename}")
+    # Save cropped image to destination folder
+    save_path = os.path.join(destination_folder, filename)
+    cropped_img.save(save_path)
+    
+    # Optional: display confirmation
+    print(f"Cropped and saved: {filename}")
 
-print("All Ampere PNGs processed successfully!")
+print("All SuperDARN PNG files processed successfully!")

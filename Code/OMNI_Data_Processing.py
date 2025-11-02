@@ -5,10 +5,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-
-# -----------------------
-# 1. Load CSV
-# -----------------------
+#------------------------------------------------------------------------------------
+# Load CSV
+#------------------------------------------------------------------------------------
 df = pd.read_csv(
     "../Raw_Data_Files/OMNI_HRO2_1MIN.csv",
     skiprows=93,
@@ -16,9 +15,9 @@ df = pd.read_csv(
     engine='python'
 )
 
-# -----------------------
-# 2. Clean column names
-# -----------------------
+#------------------------------------------------------------------------------------
+# Clean column names
+#------------------------------------------------------------------------------------
 df.columns = df.columns.str.strip()
 df.rename(columns={
     'EPOCH_TIME_yyyy-mm-ddThh:mm:ss.sssZ': 'timestamp',
@@ -32,14 +31,14 @@ df.rename(columns={
     'SYM/H_INDEX_nT': 'SYM_H_index'
 }, inplace=True)
 
-# -----------------------
-# 3. Convert timestamp
-# -----------------------
+#------------------------------------------------------------------------------------
+# Convert timestamp
+#------------------------------------------------------------------------------------
 df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
 
-# -----------------------
-# 4. Convert numeric columns & handle fill values
-# -----------------------
+#------------------------------------------------------------------------------------
+# Convert numeric columns & handle fill values
+#------------------------------------------------------------------------------------
 numeric_cols = ['Bx', 'By', 'Bz', 'flow_speed', 'proton_density', 
                 'flow_pressure', 'one_minus_M_AE', 'SYM_H_index']
 
@@ -47,25 +46,19 @@ df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors='coerce')
 fill_values = [9999.99, 99999.9, 999.990, 99.9900, -999.9]
 df.replace(fill_values, np.nan, inplace=True)
 
-# -----------------------
-# 5. Compute B-field magnitude
-# -----------------------
+#------------------------------------------------------------------------------------
+# Compute B-field magnitude
+#------------------------------------------------------------------------------------
 df['B_magnitude'] = np.sqrt(df['Bx']**2 + df['By']**2 + df['Bz']**2)
 
-# -----------------------
-# 6. Set timestamp as index
-# -----------------------
+#------------------------------------------------------------------------------------
+# Set timestamp as index
+#------------------------------------------------------------------------------------
 df.set_index('timestamp', inplace=True)
 
-# -----------------------
-# 7. Optional: Downsample for plotting
-# -----------------------
-# Uncomment and adjust factor if you want fewer points
-# df = df.iloc[::10]  # keeps every 10th row
-
-# -----------------------
-# 8. Save CSVs (optional)
-# -----------------------
+#------------------------------------------------------------------------------------
+# Save CSVs (optional)
+#------------------------------------------------------------------------------------
 output_folder = "../Processed_Data/OMNI_Data/"
 os.makedirs(output_folder, exist_ok=True)
 
@@ -76,9 +69,9 @@ for col in columns_to_plot:
     out_df.to_csv(f"{output_folder}{col}.csv", index=False, encoding='utf-8')
     print(f"Saved CSV: {output_folder}{col}.csv")
 
-# -----------------------
-# 9. Plot each column and save as PNG
-# -----------------------
+#------------------------------------------------------------------------------------
+# Plot each column and save as PNG
+#------------------------------------------------------------------------------------
 for col in columns_to_plot:
     plt.figure(figsize=(12, 4))
     plt.plot(df.index, df[col], color='tab:blue')
