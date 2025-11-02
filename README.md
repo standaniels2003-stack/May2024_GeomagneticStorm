@@ -6,6 +6,7 @@ The repository contains Python scripts for processing the raw data, generating f
 # Notes on raw data
 The raw datasets used in this project are included in the repository under Raw_Data_Files/, but they can also be obtained from the original sources:
 OMNI_HRO2_1MIN
+# How to generate processed data
 # Repository Structure:
 ```bash
 Project/
