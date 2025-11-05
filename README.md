@@ -5,8 +5,22 @@ The analysis demonstrates how upstream solar wind conditions modulate the magnet
 The repository contains Python scripts for processing the raw data, generating figures, and producing a LaTeX report summarizing the results. Raw data files are included, while processed CSVs and PNGs are generated automatically by the scripts.
 # Notes on raw data
 The raw datasets used in this project are included in the repository under Raw_Data_Files/, but they can also be obtained from the original sources:
-OMNI_HRO2_1MIN
+OMNI_HRO2_1MIN: https://cdaweb.gsfc.nasa.gov/index.html
+SuperDARN: https://superdarn.ca/convection-maps
+Ampere: https://ampere.jhuapl.edu/
+IMAGE: https://space.fmi.fi/image/www/index.php?page=home
 # How to generate processed data
+To generate the processed data run the folowing comands:
+python3 OMNI_Data_Processing.py
+python3 Ampere_Data_Processing.py
+python3 SuperDARN_Data_Processing.py
+python3 IMAGE_Data_Processing.py
+# How to generate the pdf yourself
+To generate the pdf of the report run the folowwing commands in order:
+pdflatex Report.tex
+bibtex Report
+pdflatex Report.tex
+pdflatex Report.tex
 # Repository Structure:
 ```bash
 Project/
@@ -30,8 +44,11 @@ Project/
 │ └── Graphs_Figures/ # LaTeX figure files
 │   └── OMNI_Graph1.tex
 │   └── OMNI_Graph2.tex
+│   └── SuperDARN_Figure1.tex
+│   └── SuperDARN_Figure2.tex
 │   └── Ampere_Figure1.tex
 │   └── Ampere_Figure2.tex
+│   └── IMAGE_Graph.tex
 │
 └── README.md
 ```
