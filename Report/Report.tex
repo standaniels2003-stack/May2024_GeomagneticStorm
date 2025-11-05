@@ -33,32 +33,77 @@ Space Physics and Technology (FYS3600)}
 \section{Introduction}
 Geomagnetic storms are disturbances in the Earth's magnetosphere caused by enhanced solar wind--magnetosphere coupling, which can lead to substantial variations in the geomagnetic field.
 The theoretical framework for magnetic storms was first formalized by Chapman and Ferraro \cite{chapman1933new}, who described the characteristic phases of storm development.
-Historically, geomagnetic storms were associated with auroral phenomena and disruptions in early telecommunication systems.
-In contemporary contexts, they can induce geomagnetically induced currents (GICs) in power grids, degrade satellite operations, and compromise high-precision navigation systems.
 Notably, strong geomagnetic storms have been shown to significantly affect high-latitude Real-Time Kinematic (RTK) positioning networks, resulting in reduced accuracy of precise geolocation measurements \cite{jacobsen2012observed}.
-Investigating the mechanisms and impacts of geomagnetic storms is essential for both advancing space weather science and mitigating risks to technological infrastructure.\\\\
+Understanding the mechanisms and impacts of geomagnetic storms is therefore essential both for advancing space weather science and for mitigating risks to technological infrastructure.\\\\
 % white line
-This study utilizes one of the most intense geomagnetic storms of recent times (\cite{tulasi2024super}), to demonstrate how changes in the solar wind towards Earth modulate the magnetosphere-ionosphere (M-I) system. 
-Several datasets have been used to investigate these effects.  
-The \textit{OMNI dataset} \citep{OMNI2025} provides high-resolution solar wind and interplanetary magnetic field measurements, including the magnetic field components (\(B_x\), \(B_y\), \(B_z\)), total field magnitude (\(B\)), geomagnetic indices (e.g., SYM-H), and plasma parameters such as flow speed, proton density, and dynamic pressure, with time parameters shifted to the nose of the Earth's bow shock.  
-The \textit{SuperDARN dataset}
-The \textit{AMPERE dataset} \citep{Anderson2000, AMPEREwebsite} provides global field-aligned current observations derived from the Iridium satellite constellation, revealing how solar wind energy and momentum are transmitted into the ionosphere.  
-Additional datasets may be included following the same structure: specify the source, measured variables, temporal and spatial resolution, and any preprocessing (e.g., coordinate transformations or time-shifting).  
-This approach ensures consistency and clarity when describing multiple instruments and data sources throughout the report.
+These storms result from energy transfer from the solar wind into the magnetosphere, primarily through magnetic reconnection during periods of southward interplanetary magnetic field $B_z$.
+This process drives enhanced magnetospheric convection, field-aligned currents, and auroral activity, forming a tightly coupled magnetosphere–ionosphere (M–I) system\cite[Ch.~8]{kallenrode2013space}.
+Investigating how this system responds to extreme solar wind conditions provides insight into both fundamental space physics and operational vulnerabilities.\\\\
+% white line
+This study utilizes one of the most intense geomagnetic storms of recent times \citep{tulasi2024super} to demonstrate how changes in the solar wind towards Earth modulate the M-I system.
+Several datasets have been used to investigate these effects.\\
+The \textit{OMNI dataset} \citep{OMNI2025} provides high–resolution solar wind and interplanetary magnetic field measurements, including the magnetic field components (\(B_x\), \(B_y\), \(B_z\)), total field magnitude (\(B\)), geomagnetic indices (e.g., SYM–H), and plasma parameters such as flow speed, proton density, and dynamic pressure, with time parameters shifted to the nose of the Earth's bow shock.\\
+The \textit{SuperDARN dataset} \citep{Greenwald1995, Chisham2007} provides large–scale high–latitude ionospheric plasma convection measurements using coherent HF radar backscatter.
+These data allow the reconstruction of global ionospheric flow patterns, cross–polar cap potential, and convection responses to solar wind driving during storm conditions.\\
+The \textit{AMPERE dataset} \citep{Anderson2000, AMPEREwebsite} provides global field–aligned current observations derived from the Iridium satellite constellation, revealing how solar wind energy and momentum are transmitted into the ionosphere.\\
+The \textit{IMAGE dataset} \citep{Burch2000, Mende2000} offers ultraviolet auroral imaging, enabling direct visualization of auroral oval dynamics and particle precipitation signatures.
+These observations support analysis of magnetosphere–ionosphere coupling processes through storm–time auroral morphology and expansion.
 %==================================================================
 \section{Observations}
+The geomagnetic storm of 10–11 May 2024 is characterized by clear variations across multiple datasets, reflecting strong solar wind–magnetosphere–ionosphere coupling.
+%------------------------------------------------------------------
+\subsection{OMNI Solar Wind Data}
+The OMNI dataset captures the near-Earth solar wind and geomagnetic response during the 10–11 May 2024 storm. The $B_z$ component turns southward at ~17:30~UT, marking the onset of dayside reconnection, and the total IMF magnitude $B$ rises shortly after, reflecting enhanced solar wind energy input (Figure~\ref{fig:OMNI1}).
+SYM-H decreases sharply during the storm’s main phase, indicating ring current intensification (Figure~\ref{fig:OMNI1}).\\
+Solar wind flow speed increases from ~400 to ~1000~km/s, while proton density peaks at storm onset, driving similar enhancements in dynamic pressure (Figure~\ref{fig:OMNI2}).
+The nearly identical timing of density and pressure peaks, along with abrupt changes in all parameters around 17:30~UT, highlights the simultaneous onset of the storm-driven variations.
+These observations illustrate the timing and magnitude of solar wind forcing that drive the coupled magnetosphere–ionosphere response seen in AMPERE, SuperDARN, and IMAGE datasets.
 \input{Graphs_Figures/OMNI_Graph1.tex}
 \input{Graphs_Figures/OMNI_Graph2.tex}
+%------------------------------------------------------------------
+\subsection{SuperDARN Ionospheric Convection}
+SuperDARN convection maps reveal the high-latitude ionospheric plasma flows during the 10–11 May 2024 storm.
+The maps show enhanced antisunward flows across the polar cap and strong return flows near the auroral oval after the storm unset (Figures~\ref{fig:SuperDarn1}--\ref{fig:SuperDarn2}). 
+The cross-polar cap potential increases following the southward turn of $B_z$, consistent with enhanced dayside reconnection driving stronger magnetosphere–ionosphere coupling.
+These flow patterns illustrate the large-scale response of the high-latitude ionosphere to the solar wind variations observed in the OMNI dataset.
 \input{Graphs_Figures/SuperDARN_Figure1.tex}
 \input{Graphs_Figures/SuperDARN_Figure2.tex}
+%------------------------------------------------------------------
+\subsection{AMPERE Field-Aligned Currents}
+AMPERE maps provide global observations of field-aligned currents (FACs) flowing between the magnetosphere and the ionosphere.
+During the 10–11 May 2024 storm, Region~1 (R1) and Region~2 (R2) currents show significant intensification  (Figures~\ref{fig:Ampere1}--\ref{fig:Ampere2}).\\
+R1 currents are primarily located on the dayside auroral oval, flowing out of the ionosphere (upward), while R2 currents are concentrated on the nightside and inner auroral regions, flowing into the ionosphere (downward).
+The typical concentric red–blue patterns indicate alternating upward and downward currents, forming a system of nested current loops that map directly to the auroral oval.\\
+The FAC intensification coincides closely with the southward turning of $B_z$ in the OMNI dataset and with enhanced polar cap convection observed in SuperDARN.
+The strongest currents occur near local magnetic noon for R1 and near midnight for R2, consistent with typical storm-time FAC morphology.\\
+These observations illustrate how solar wind energy is transmitted along magnetic field lines into the ionosphere, driving auroral currents and shaping the high-latitude electrodynamics.
+The timing and magnitude of the FAC enhancements support a clear link between solar wind forcing, magnetosphere–ionosphere coupling, and ionospheric current responses.
 \input{Graphs_Figures/Ampere_Figure1.tex}
 \input{Graphs_Figures/Ampere_Figure2.tex}
+%------------------------------------------------------------------
+\subsection{IMAGE Auroral Electrojet Indices}
+The IMAGE dataset provides line plots of the IE, IU, and IL auroral electrojet indices, representing total, eastward, and westward ionospheric currents, respectively (Figure~\ref{fig:image_il}).
+During the 10--11 May 2024 storm, all three indices show pronounced intensifications.\\
+IE, the total electrojet index, captures the overall strength of high-latitude currents, while IU and IL reveal the contributions from eastward and westward currents.
+Peaks in these indices correspond closely with enhanced Region~1 and Region~2 FACs observed in AMPERE, and with accelerated polar cap flows seen in SuperDARN.
+The largest enhancements occur shortly after the southward turning of $B_z$, reflecting strong solar wind driving and auroral oval expansion.\\
+These observations provide complementary information to FAC maps and plasma convection measurements, allowing a complete picture of storm-time magnetosphere–ionosphere coupling.
+\input{Graphs_Figures/IMAGE_Graph.tex}
+%------------------------------------------------------------------
+\subsection{Cross-Dataset Connections}
+The combined observations from OMNI, SuperDARN, AMPERE, and IMAGE reveal a coherent sequence of magnetosphere–ionosphere responses during the 10--11 May 2024 storm.
+The southward turning of IMF $B_z$ and the sharp increase in solar wind dynamic pressure (OMNI) coincide with the onset of enhanced high-latitude convection observed in SuperDARN.
+This is accompanied by intensification of Region~1 and Region~2 field-aligned currents in AMPERE, forming the characteristic concentric red–blue FAC patterns around the auroral oval.\\
+Simultaneously, IMAGE electrojet indices (IE, IU, IL) show pronounced peaks, indicating strong eastward and westward ionospheric currents and expansion of the auroral oval.
+The timing of these enhancements aligns closely across datasets, illustrating the direct chain of energy transfer: solar wind driving leads to magnetospheric convection and FAC intensification, which in turn drives ionospheric currents and auroral activity.\\
+These cross-dataset correlations provide clear evidence of the tightly coupled nature of the magnetosphere–ionosphere system.
+By analyzing the temporal and spatial correspondence of solar wind parameters, FACs, ionospheric flows, and auroral currents, we can quantitatively link upstream solar wind forcing to downstream auroral and electrodynamic responses at high latitudes.
 %==================================================================
 \section{Discussion}
 %==================================================================
 \section{Conclusion}
 %==================================================================
 \bibliographystyle{apalike}  % Or another name-year style
-\bibliography{references}    % 'references' is the name of your .bib file (without .bib extension)
+\bibliography{References}    % 'References' is the name of your .bib file (without .bib extension)
 %==================================================================
 \end{document}

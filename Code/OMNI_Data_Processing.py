@@ -73,7 +73,7 @@ for col in columns_to_plot:
 # Plot each column and save as PNG
 #------------------------------------------------------------------------------------
 for col in columns_to_plot:
-    plt.figure(figsize=(12, 4))
+    plt.figure(figsize=(12, 3))
     plt.plot(df.index, df[col], color='tab:blue')
     plt.title(col)
     plt.xlabel('Time')

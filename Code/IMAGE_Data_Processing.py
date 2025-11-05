@@ -11,7 +11,8 @@ import os
 #------------------------------------------------------------------------------------
 indicator_files = [
     "../Raw_Data_Files/IMAGE_Data/IMAGE_Data_202410.txt",
-    "../Raw_Data_Files/IMAGE_Data/IMAGE_Data_202411.txt"
+    "../Raw_Data_Files/IMAGE_Data/IMAGE_Data_202411.txt",
+    "../Raw_Data_Files/IMAGE_Data/IMAGE_Data_202412.txt"
 ]
 
 output_folder = "../Processed_Data/IMAGE_Data/"
@@ -71,7 +72,7 @@ for col in numeric_cols:
 # Plot each column and save as PNG
 #------------------------------------------------------------------------------------
 for col in numeric_cols:
-    plt.figure(figsize=(12,4))
+    plt.figure(figsize=(12,3))
     plt.plot(df.index, df[col], color='tab:blue')
     plt.title(f"IMAGE Electrojet: {col}")
     plt.xlabel('Time (UT)')
