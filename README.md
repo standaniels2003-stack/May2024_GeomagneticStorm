@@ -1,8 +1,16 @@
 # May2024_GeomagneticStorm
-This project investigates the May 2024 geomagnetic storm using high-resolution datasets from **OMNI** (solar wind and interplanetary magnetic field) and **AMPERE** (field-aligned currents).  
-The analysis demonstrates how upstream solar wind conditions modulate the magnetosphere-ionosphere (M-I) system and affect geomagnetic activity.  
+# FYS3600 Project: The Extreme Geomagnetic Storm of 10–11 May 2024
+**Stan Daniels** – University of Oslo – Autumn 2025
 
-The repository contains Python scripts for processing the raw data, generating figures, and producing a LaTeX report summarizing the results. Raw data files are included, while processed CSVs and PNGs are generated automatically by the scripts.
+This repository contains the complete analysis of one of the strongest geomagnetic storms of Solar Cycle 25 using four independent high-latitude datasets:
+
+- Time-shifted OMNI solar wind and IMF parameters  
+- SuperDARN global convection maps  
+- AMPERE field-aligned currents  
+- IMAGE auroral electrojet indices (AU/AL/IE)
+
+The project clearly demonstrates intense dayside and nightside magnetic reconnection, massive polar cap expansion, cross-polar-cap potentials > 200 kV, Region 1/2 currents exceeding 3 µA/m², and multiple substorms with AL < −3000 nT.
+## Repository structure
 # Notes on raw data
 The raw datasets used in this project are included in the repository under Raw_Data_Files/, but they can also be obtained from the original sources:  
 OMNI_HRO2_1MIN: https://cdaweb.gsfc.nasa.gov/index.html  
