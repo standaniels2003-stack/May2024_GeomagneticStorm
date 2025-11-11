@@ -10,7 +10,6 @@ This repository contains the complete analysis of one of the strongest geomagnet
 - IMAGE auroral electrojet indices (AU/AL/IE)
 
 The project clearly demonstrates intense dayside and nightside magnetic reconnection, massive polar cap expansion, cross-polar-cap potentials > 200 kV, Region 1/2 currents exceeding 3 µA/m², and multiple substorms with AL < −3000 nT.
-## Repository structure
 # Notes on raw data
 The raw datasets used in this project are included in the repository under Raw_Data_Files/, but they can also be obtained from the original sources:  
 OMNI_HRO2_1MIN: https://cdaweb.gsfc.nasa.gov/index.html  
