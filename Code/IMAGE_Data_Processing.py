@@ -71,16 +71,21 @@ for col in numeric_cols:
 #------------------------------------------------------------------------------------
 # Plot each column and save as PNG
 #------------------------------------------------------------------------------------
-for col in numeric_cols:
-    plt.figure(figsize=(12,3))
-    plt.plot(df.index, df[col], color='tab:blue')
-    plt.title(f"IMAGE Electrojet: {col}")
-    plt.xlabel('Time (UT)')
-    plt.ylabel(col)
-    plt.grid(True)
+units_image = {
+    'IL': r'AL index (nT)',
+    'IU': r'AU index (nT)',
+    'IE': r'IE index (nT)',
+}
+
+for col in ['IL', 'IU', 'IE']:
+    plt.figure(figsize=(12, 3.5))
+    plt.plot(df.index, df[col], color='#1f77b4', linewidth=1.2)
+    plt.title(units_image[col], fontsize=14, pad=15)
+    plt.xlabel('Time (UT) – 10–11 May 2024')
+    plt.ylabel(units_image[col], fontsize=13)
+    plt.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.savefig(f"{output_folder}{col}.png", dpi=300)
+    plt.savefig(f"{output_folder}{col}.png", dpi=300, bbox_inches='tight')
     plt.close()
-    print(f"Saved PNG: {output_folder}{col}.png")
 
 print("Processing complete!")
